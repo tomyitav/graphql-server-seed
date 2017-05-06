@@ -2,12 +2,12 @@
 
 Easily get started and create your graphql server using:
 
-+graphql-server-express
-+graphql-subscriptions
-+graphql-tools
-+merge-graphql-schemas
-+mongoose
-+babel-cli
++ graphql-server-express
++ graphql-subscriptions
++ graphql-tools
++ merge-graphql-schemas
++ mongoose
++ babel-cli
 
 This project demonstrates how to add Queries, Mutations and Subscriptions in a modular way.
 
