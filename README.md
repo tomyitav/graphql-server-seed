@@ -33,7 +33,7 @@ The server will run on port 8080. You can change this by editing `server.js`.
 We use the function `makeExecutableSchema()` from graphql-tools to to combine our
 types and resolvers. Instead of passing one large string for our schema, we
 split our types and resolvers to multiple files, located in graphql directory in
-types and resolvers directory. This way, we avoid schema complexity by using
+types and resolvers directories. This way, we avoid schema complexity by using
 merge-graphql-schemas:
 
 ```js
