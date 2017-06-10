@@ -56,6 +56,6 @@ Pass node parameters of --preset=babel-preset-es2015
 
 ## Connect to the server from client app
 
-See the following [example](https://github.com/tomyitav/angular1-apollo-client-sample/) on how to connect to the server using apollo-client.
+See the following [example](https://github.com/tomyitav/apollo-angular-client-starter) on how to connect to the server using apollo-angular.
 The project demonstrates using Queries, Mutations and Subscriptions.
 
