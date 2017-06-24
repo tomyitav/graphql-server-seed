@@ -5,12 +5,14 @@ import cors from "cors";
 import {createServer} from "http";
 import {SubscriptionServer} from "subscriptions-transport-ws";
 import {printSchema} from "graphql/utilities/schemaPrinter";
-import {mongoConn} from './db/connect'
+import {connectToDb} from './db/connect'
 import {subscriptionManager} from "./graphql/subscriptions/subscriptions";
 import schema from "./graphql/schema/schema";
 
 const GRAPHQL_PORT = 8080;
 const WS_PORT = 8090;
+
+connectToDb();
 
 const graphQLServer = express().use('*', cors());
 
