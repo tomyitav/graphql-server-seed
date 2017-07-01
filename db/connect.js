@@ -1,12 +1,15 @@
 import Mongoose from 'mongoose';
+import logger from '../core/logger/app-logger'
+import config from '../core/config/config.dev'
 
 const connectToDb = () => {
-    Mongoose.connect('mongodb://localhost:27017/trains', (err) => {
+    let dbHost = config.db;
+    Mongoose.connect(`mongodb://${dbHost}:27017/trains`, (err) => {
         if (err) {
-            console.error('Could not connect to MongoDB on port 27017');
+            logger.log('info', 'Could not connect to MongoDB');
         }
         else {
-            console.log('Connected to mongo!!!')
+            logger.log('info', 'Connected to mongo!!!');
         }
     });
 }

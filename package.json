@@ -30,7 +30,9 @@
     "lodash": "^4.15.0",
     "merge-graphql-schemas": "0.0.11",
     "mongoose": "^4.8.6",
-    "subscriptions-transport-ws": "*"
+    "subscriptions-transport-ws": "*",
+    "winston": "^2.3.1",
+    "winston-daily-rotate-file": "^1.4.6"
   },
   "devDependencies": {
     "babel-cli": "6.16.0",
