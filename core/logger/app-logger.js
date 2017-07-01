@@ -16,11 +16,4 @@ let logger = new winston.Logger({
     ]
 });
 
-// logger.configure({
-//     level: 'verbose',
-//     transports: [
-//         new (rotate)(opts)
-//     ]
-// });
-
 export default logger;
