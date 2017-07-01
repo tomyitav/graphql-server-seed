@@ -6,10 +6,10 @@ const connectToDb = () => {
     let dbHost = config.db;
     Mongoose.connect(`mongodb://${dbHost}:27017/trains`, (err) => {
         if (err) {
-            logger.log('info', 'Could not connect to MongoDB');
+            logger.error('Could not connect to MongoDB');
         }
         else {
-            logger.log('info', 'Connected to mongo!!!');
+            logger.info('Connected to mongo!!!');
         }
     });
 }

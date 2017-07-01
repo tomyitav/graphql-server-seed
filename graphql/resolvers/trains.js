@@ -1,4 +1,5 @@
 import {TrainModel} from '../../db/trains'
+import logger from '../../core/logger/app-logger'
 
 const resolveFunctions = {
     Query: {
@@ -9,7 +10,7 @@ const resolveFunctions = {
             }
             return TrainModel.find(where, (err, trains) => {
                 if (err) {
-                    console.log("Error- ", err);
+                    logger.error("Error- ", err);
                 }
             })
         }
@@ -20,7 +21,7 @@ const resolveFunctions = {
             let newTrain = new TrainModel({name, speed, diesel})
             newTrain.save((err, savedTrain) => {
                 if(err) {
-                    console.log('Got error - ', err)
+                    logger.error('Got error - ', err)
                 }
             })
         },

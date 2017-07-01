@@ -8,6 +8,7 @@ import {printSchema} from "graphql/utilities/schemaPrinter";
 import {connectToDb} from './db/connect'
 import {subscriptionManager} from "./graphql/subscriptions/subscriptions";
 import schema from "./graphql/schema/schema";
+import logger from './core/logger/app-logger'
 
 const GRAPHQL_PORT = 8080;
 const WS_PORT = 8090;
@@ -30,7 +31,7 @@ graphQLServer.use('/schema', (req, res) => {
   res.send(printSchema(schema));
 });
 
-graphQLServer.listen(GRAPHQL_PORT, () => console.log(
+graphQLServer.listen(GRAPHQL_PORT, () => logger.info(
   `GraphQL Server is now running on http://localhost:${GRAPHQL_PORT}/graphql`
 ));
 
@@ -40,7 +41,7 @@ const websocketServer = createServer((request, response) => {
   response.end();
 });
 
-websocketServer.listen(WS_PORT, () => console.log( // eslint-disable-line no-console
+websocketServer.listen(WS_PORT, () => logger.info( // eslint-disable-line no-console
   `Websocket Server is now running on http://localhost:${WS_PORT}`
 ));
 

@@ -1,5 +1,6 @@
 import {pubsub} from "../subscriptions/subscriptions";
 import {CarModel} from "../../db/cars";
+import logger from '../../core/logger/app-logger'
 
 const resolveFunctions = {
     Query: {
@@ -10,7 +11,7 @@ const resolveFunctions = {
             }
             return CarModel.find(where ,(err, cars) => {
                 if(err) {
-                    console.log("Error- ", err);
+                    logger.error("Error- ", err);
                 }
             })
         }
@@ -18,12 +19,12 @@ const resolveFunctions = {
     },
     Mutation: {
         updateCar (_, {currName, newName}) {
-            console.log('Updating  ' + currName + " with new name " + newName);
+            logger.info('Updating  ' + currName + " with new name " + newName);
             let where = {};
             Object.assign(where, {name: currName});
             CarModel.findOneAndUpdate(where, {$set:{name:newName}} , {upsert : true}, (err, cars) => {
                 if(err) {
-                    console.log('Got error - ' , err);
+                    logger.error('Got error - ' , err);
                 }
                 cars.name = newName;
                 pubsub.publish('carUpdated', cars);
@@ -35,23 +36,23 @@ const resolveFunctions = {
             let newCar = new CarModel({name})
             newCar.save((err, savedCar) => {
                 if(err) {
-                    console.log('Got error - ', err)
+                    logger.error('Got error - ', err)
                 }
-                console.log('Logging saved car-');
-                console.log(savedCar);
+                logger.info('Logging saved car-');
+                logger.info(savedCar);
                 pubsub.publish('carAdded', savedCar);
             })
         },
 
         deleteCar (_, {name}) {
-            console.log('Deleting ' + name );
+            logger.info('Deleting ' + name );
             let where = {};
             Object.assign(where, {name: name});
             CarModel.findOneAndRemove(where, (err, cars) => {
                 if (err) {
-                    console.log('Got error - ', err);
+                    logger.error('Got error - ', err);
                 }
-                console.log('Removed car - ', cars);
+                logger.info('Removed car - ', cars);
                 pubsub.publish('carDeleted', cars);
                 return cars
             })
