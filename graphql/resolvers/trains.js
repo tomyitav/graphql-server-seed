@@ -25,6 +25,17 @@ const resolveFunctions = {
                 }
             })
         },
+    },
+    Subscription: {
+        trainUpdated(train) {
+            return train
+        },
+        trainAdded(train) {
+            return train
+        },
+        trainDeleted(train) {
+            return train
+        }
     }
 };
 

@@ -19,6 +19,12 @@ type Query {
   train(name: String): [Train]
 }
 
+type Subscription {
+  trainUpdated: Train
+  trainAdded: Train
+  trainDeleted: Train
+}
+
 `;
 
 export default schema;
