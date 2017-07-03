@@ -1,5 +1,6 @@
 import {TrainModel} from '../../db/trains'
 import logger from '../../core/logger/app-logger'
+import { pubsub } from '../subscriptions/subscriptions'
 
 const resolveFunctions = {
     Query: {
@@ -34,7 +35,7 @@ const resolveFunctions = {
                 if (err) {
                     logger.error('Got error - ', err);
                 }
-                logger.info('Removed train- ', deleted);
+                logger.info('Removed train- ', deleted.name);
                 pubsub.publish('trainDeleted', deleted);
                 return deleted;
             })
