@@ -23,8 +23,22 @@ const resolveFunctions = {
                 if(err) {
                     logger.error('Got error - ', err)
                 }
+                pubsub.publish('trainAdded', savedTrain);
+                return savedTrain;
             })
         },
+        deleteTrain(_, {name}) {
+            let where = {};
+            Object.assign(where, {name: name});
+            TrainModel.findOneAndRemove(where, (err, deleted) => {
+                if (err) {
+                    logger.error('Got error - ', err);
+                }
+                logger.info('Removed train- ', deleted);
+                pubsub.publish('trainDeleted', deleted);
+                return deleted;
+            })
+        }
     },
     Subscription: {
         trainUpdated(train) {

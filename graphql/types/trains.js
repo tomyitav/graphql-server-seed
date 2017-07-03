@@ -12,6 +12,9 @@ type Mutation {
     speed: Int!
     diesel: Boolean!
   ): Train
+  deleteTrain (
+    name: String!
+  ) : Train
 }
 
 # the schema allows the following query:
