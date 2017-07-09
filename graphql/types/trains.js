@@ -12,6 +12,12 @@ type Mutation {
     speed: Int!
     diesel: Boolean!
   ): Train
+  updateTrain (
+    id: String!
+    name: String
+    speed: Int
+    diesel: Boolean
+  ): Train
   deleteTrain (
     name: String!
   ) : Train

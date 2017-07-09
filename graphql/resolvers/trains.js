@@ -18,6 +18,28 @@ const resolveFunctions = {
 
     },
     Mutation: {
+        updateTrain (_, {id, name, speed, diesel}) {
+            let where = {};
+            let updateDocument = {};
+            Object.assign(where, {_id: id});
+            if(name) {
+                Object.assign(updateDocument, {name});
+            }
+            if(speed) {
+                Object.assign(updateDocument, {speed});
+            }
+            if(diesel !== undefined) {
+                Object.assign(updateDocument, {diesel});
+            }
+            TrainModel.findOneAndUpdate(where, {$set:updateDocument} , {upsert : true}, (err, trains) => {
+                if(err) {
+                    logger.error('Got error - ' , err);
+                }
+                pubsub.publish('trainUpdated', trains);
+                return trains
+            })
+        },
+
         addTrain (_, {name, speed, diesel}) {
             let newTrain = new TrainModel({name, speed, diesel})
             newTrain.save((err, savedTrain) => {
