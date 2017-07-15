@@ -4,6 +4,7 @@
   "description": "Seed project for easily creating modular graphql server",
   "scripts": {
     "start": "nodemon ./server.js --exec babel-node",
+    "prod": "babel-node ./server.js --preset=babel-preset-es2015",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ."
   },
