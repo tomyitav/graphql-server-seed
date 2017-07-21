@@ -54,6 +54,16 @@ is updated automatically.
 Set babel-node executable as the node interpreter.
 Pass node parameters of --preset=babel-preset-es2015
 
+## Create Docker image
+
+In the project root directory, open shell and run:
+```
+docker build -t graphql-server-seed .
+```
+
+Instructions about running the container are available [here](https://hub.docker.com/r/tomyitav/graphql-server-seed/)
+
+
 ## Connect to the server from client app
 
 See the following [example](https://github.com/tomyitav/apollo-angular-client-starter) on how to connect to the server using apollo-angular.
