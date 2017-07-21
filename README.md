@@ -56,13 +56,12 @@ Pass node parameters of --preset=babel-preset-es2015
 
 ## Create Docker image
 
-In the project root directory, open shell and run:
+After npm intalling the project, go to project root directory, open shell and run:
 ```
 docker build -t graphql-server-seed .
 ```
 
 Instructions about running the container are available [here](https://hub.docker.com/r/tomyitav/graphql-server-seed/)
-
 
 ## Connect to the server from client app
 
