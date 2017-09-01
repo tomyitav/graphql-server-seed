@@ -38,11 +38,19 @@ merge-graphql-schemas:
 
 ```js
   import path from "path";
-  import {mergeGraphqlSchemas} from "merge-graphql-schemas";
+  import { makeExecutableSchema } from 'graphql-tools';
+  import { fileLoader, mergeTypes, mergeResolvers } from 'merge-graphql-schemas';
 
-  const schema = mergeGraphqlSchemas(path.join(__dirname, '../'));
+  const typesArray = fileLoader(path.join(__dirname, '../types'), { recursive: true });
+  const resolversArray = fileLoader(path.join(__dirname, '../resolvers'));
+  const allTypes = mergeTypes(typesArray);
+  const allResolvers = mergeResolvers(resolversArray);
+  const schema = makeExecutableSchema({
+      typeDefs: allTypes,
+      resolvers: allResolvers
+  });
 
-  export default schema
+  export default schema;
 ```
 
 So as your project grows - you can extend the schema by adding new type in types
