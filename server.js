@@ -5,13 +5,14 @@ import cors from "cors";
 import {createServer} from "http";
 import {SubscriptionServer} from "subscriptions-transport-ws";
 import {printSchema} from "graphql/utilities/schemaPrinter";
-import {connectToDb} from './db/connect'
+import {connectToDb} from "./db/connect";
 import {subscriptionManager} from "./graphql/subscriptions/subscriptions";
 import schema from "./graphql/schema/schema";
-import logger from './core/logger/app-logger'
+import logger from "./core/logger/app-logger";
+import config from "./core/config/config.dev";
 
-const GRAPHQL_PORT = 8080;
-const WS_PORT = 8090;
+const GRAPHQL_PORT = config.serverPort;
+const WS_PORT = config.serverWsPort;
 
 connectToDb();
 

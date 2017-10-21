@@ -26,7 +26,7 @@ npm install
 npm start
 ```
 
-The server will run on port 8080. You can change this by editing `server.js`.
+The server will run on port 8080. You can change this by editing config file.
 
 ## Project structure
 
