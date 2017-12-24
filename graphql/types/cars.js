@@ -2,22 +2,25 @@ const schema = `
 type Car {
  _id : String
  name: String
+ speed: Int
 }
 
 # the schema allows the following query:
 type Query {
-  car(name: String): [Car]
+  car(name: String, speed: Int): [Car]
 }
 
 # this schema allows the following mutation:
 type Mutation {
   updateCar (
     currName: String!
-    newName: String!
+    newName: String
+    newSpeed: String
   ): Car
   
   addCar (
-    name: String!
+    name: String!,
+    speed: Int
   ): Car
   
   deleteCar(name: String!): Car
