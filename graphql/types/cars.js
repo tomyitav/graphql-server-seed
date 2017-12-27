@@ -15,7 +15,7 @@ type Mutation {
   updateCar (
     currName: String!
     newName: String
-    newSpeed: String
+    newSpeed: Int
   ): Car
   
   addCar (
