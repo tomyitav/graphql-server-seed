@@ -7,7 +7,7 @@ type Car {
 
 # the schema allows the following query:
 type Query {
-  car(name: String, speed: Int): [Car]
+  car(name: String!): [Car]
 }
 
 # this schema allows the following mutation:

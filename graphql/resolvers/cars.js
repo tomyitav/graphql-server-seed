@@ -4,14 +4,9 @@ import logger from '../../core/logger/app-logger';
 
 const resolveFunctions = {
   Query: {
-    car(_, { name, speed }) {
+    car(_, { name}) {
       const where = {};
-      if (name) {
-        Object.assign(where, { name });
-      }
-      if (speed) {
-        Object.assign(where, { speed });
-      }
+      Object.assign(where, { name });
       return CarModel.find(where, (err, cars) => {
         if (err) {
           logger.error('Error- ', err);
